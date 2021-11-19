@@ -10,8 +10,24 @@ let playerGuess = ""
 let lives = 10
 
 //set up the game
-livesDisplayBox.innerText = lives
+livesDisplayBox.innerText = `${lives} Lives Left`
 createKeyboard()
+
+function createKeyboard(){
+    const unicodeA = 97
+    const unicodeZ = 122
+    for(let i=unicodeA; i<=unicodeZ; i++){
+        let character = String.fromCharCode(i);
+        let letterButton =  document.createElement('button')
+        letterButton.type = 'button';
+        letterButton.innerHTML = character
+        letterButton.className = 'letter-btn';
+        letterButton.setAttribute('id', character.toString())
+        letterButton.disabled = true
+        letterButton.addEventListener('click', handleGuess)
+        playerKeyboard.appendChild(letterButton)
+    }
+}
 
 function handleStart() {
     fetch('https://random-word-api.herokuapp.com/word?number=1&swear=0')
@@ -25,27 +41,20 @@ function handleStart() {
             blanksDisplayBox.innerText = playerGuess
             startBtn.style.display = 'none'
             resetBtn.style.display = 'block'
+            const letterButtons = document.getElementsByClassName('letter-btn')
+            Array.from(letterButtons).forEach((item)=>{
+                item.disabled = false
+            })
         })
 }
 
-function createKeyboard(){
-    const unicodeA = 97
-    const unicodeZ = 122
-    for(let i=unicodeA; i<=unicodeZ; i++){
-        let character = String.fromCharCode(i);
-        let letterButton =  document.createElement('button')
-        letterButton.type = 'button';
-        letterButton.innerHTML = character
-        letterButton.className = 'letter-button';
-        letterButton.setAttribute('id', character.toString())
-        letterButton.addEventListener('click', handleGuess)
-        playerKeyboard.appendChild(letterButton)
-    }
-}
+
 
 function handleGuess(e) {
     const stringToCheck = e.target.id
-    document.getElementById(stringToCheck).classList.add('used')
+    const targetBtn = document.getElementById(e.target.id)
+    targetBtn.classList.add('used')
+    targetBtn.disabled = true
     if (wordToGuess.indexOf(stringToCheck) > -1) {
         for (let i = 0; i < wordToGuess.length; i++) {
             if (stringToCheck === wordToGuess[i]) {
@@ -54,36 +63,52 @@ function handleGuess(e) {
                 playerGuess = playerGuessArray.join('')
             }
         }
-        checkFinish()
+        checkWin()
     }
     else {
         lives--
-        livesDisplayBox.innerText = lives
+        livesDisplayBox.innerText = `${lives} Lives Left`
+        checkLose()
     }
 
     blanksDisplayBox.innerText = playerGuess
 }
 
 
-function checkFinish() {
+function checkWin() {
     if (wordToGuess === playerGuess) {
-        console.log('you win')
+        livesDisplayBox.innerText = "You Win"
+        blanksDisplayBox.style.color = "limegreen"
     }
     else {
         return
     }
 }
 
+function checkLose(){
+    if (lives > 0){
+        return
+    }
+    else{
+        playerGuess = wordToGuess
+        livesDisplayBox.innerText = "You Lose"
+        blanksDisplayBox.style.color = "red"
+    }
+}
+
 function handleReset() {
     blanksDisplayBox.innerText = ''
     // wordDisplayBox.innerText = ''
-    livesDisplayBox.innerText = ''
     lives = 10
+    livesDisplayBox.innerText = `${lives} Lives Left`
     playerGuess = ''
     startBtn.style.display = 'block'
     resetBtn.style.display = 'none'
+    blanksDisplayBox.style.color = "#333"
     const usedLetters = document.getElementsByClassName('used')
     Array.from(usedLetters).forEach((item)=>{
         item.classList.remove('used')
+        item.disabled = false
     })
+    handleStart()
 }

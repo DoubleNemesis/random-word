@@ -3,7 +3,8 @@ body{
     padding: 0;
     background-color: #333;
     color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Poppins', sans;
+    letter-spacing: .08rem;
 }
 
 .flex{
@@ -67,7 +68,7 @@ h2{
     padding: .2rem;
 }
 
-.letter-button{
+button.letter-btn{
     height: 40px;
     width: 40px;
     border-radius: 5px;
@@ -77,7 +78,11 @@ h2{
     font-size: 1.2rem;
 }
 
-button.btn{
+button.letter-btn[disabled]{
+    opacity: 0.5;
+}
+
+button.main-btn{
     width: 40%;
     padding: .8rem .2rem;
     border-radius: 5px;
