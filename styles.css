@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: #333;
@@ -7,41 +7,46 @@ body{
     letter-spacing: .08rem;
 }
 
-.flex{
+/* general */
+
+.flex {
     display: flex;
 }
 
-.center{
+/* fonts */
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    margin: 1.5rem 0 0 0;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+/* header */
+
+.header {
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.header{
+/* game elements */
+
+.game-container {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.game{
-    flex-direction: column;
-}
+/* .word-display-box {
+    visibility: hidden;
+} */
 
-/* fonts */
-h1, h2{
-text-align: center;
-}
-
-h1{
-    margin: 1.5rem 0 0 0;
-}
-
-h2{
-    font-size: 1rem;
-}
-
-.word-display-box{
-    visibility: hidden ;
-}
-
-.blanks-display-box{
+.blanks-display-box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,8 +61,7 @@ h2{
     padding: 0;
 }
 
-.player-keyboard{
-    /* background-color: white; */
+.player-keyboard {
     justify-content: center;
     align-items: center;
     border-radius: 5px;
@@ -68,7 +72,9 @@ h2{
     padding: .2rem;
 }
 
-button.letter-btn{
+/* buttons */
+
+button.letter-btn {
     height: 40px;
     width: 40px;
     border-radius: 5px;
@@ -78,11 +84,11 @@ button.letter-btn{
     font-size: 1.2rem;
 }
 
-button.letter-btn[disabled]{
+button.letter-btn[disabled] {
     opacity: 0.5;
 }
 
-button.main-btn{
+button.main-btn {
     width: 40%;
     padding: .8rem .2rem;
     border-radius: 5px;
@@ -94,11 +100,11 @@ button.main-btn{
     color: #333
 }
 
-.reset-btn{
+button.reset-btn {
     display: none;
 }
 
-.used{
+button.used {
     background-color: #666;
     color: #999;
 }

@@ -10,9 +10,7 @@ let playerGuess = ""
 let lives = 10
 
 //set up the game
-livesDisplayBox.innerText = `${lives} Lives Left`
 createKeyboard()
-
 function createKeyboard(){
     const unicodeA = 97
     const unicodeZ = 122
@@ -22,7 +20,7 @@ function createKeyboard(){
         letterButton.type = 'button';
         letterButton.innerHTML = character
         letterButton.className = 'letter-btn';
-        letterButton.setAttribute('id', character.toString())
+        letterButton.setAttribute('id', character)
         letterButton.disabled = true
         letterButton.addEventListener('click', handleGuess)
         playerKeyboard.appendChild(letterButton)
@@ -41,14 +39,13 @@ function handleStart() {
             blanksDisplayBox.innerText = playerGuess
             startBtn.style.display = 'none'
             resetBtn.style.display = 'block'
+            livesDisplayBox.innerText = `${lives} Lives Left`
             const letterButtons = document.getElementsByClassName('letter-btn')
             Array.from(letterButtons).forEach((item)=>{
                 item.disabled = false
             })
         })
 }
-
-
 
 function handleGuess(e) {
     const stringToCheck = e.target.id
@@ -70,10 +67,8 @@ function handleGuess(e) {
         livesDisplayBox.innerText = `${lives} Lives Left`
         checkLose()
     }
-
     blanksDisplayBox.innerText = playerGuess
 }
-
 
 function checkWin() {
     if (wordToGuess === playerGuess) {
@@ -102,8 +97,6 @@ function handleReset() {
     lives = 10
     livesDisplayBox.innerText = `${lives} Lives Left`
     playerGuess = ''
-    startBtn.style.display = 'block'
-    resetBtn.style.display = 'none'
     blanksDisplayBox.style.color = "#333"
     const usedLetters = document.getElementsByClassName('used')
     Array.from(usedLetters).forEach((item)=>{
