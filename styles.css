@@ -1,0 +1,99 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.flex{
+    display: flex;
+}
+
+.center{
+    align-items: center;
+    justify-content: center;
+}
+
+.header{
+    flex-direction: column;
+}
+
+.game{
+    flex-direction: column;
+}
+
+/* fonts */
+h1, h2{
+text-align: center;
+}
+
+h1{
+    margin: 1.5rem 0 0 0;
+}
+
+h2{
+    font-size: 1rem;
+}
+
+.word-display-box{
+    visibility: hidden ;
+}
+
+.blanks-display-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 3rem;
+    background-color: white;
+    margin: 1rem 0;
+    border-radius: 5px;
+    color: #333;
+    text-align: center;
+    font-size: 2rem;
+    padding: 0;
+}
+
+.player-keyboard{
+    /* background-color: white; */
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 240px;
+    width: 80%;
+    flex-wrap: wrap;
+    gap: .2rem;
+    padding: .2rem;
+}
+
+.letter-button{
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    font-size: 1.2rem;
+}
+
+button.btn{
+    width: 40%;
+    padding: .8rem .2rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2rem;
+    margin: 1rem auto;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #333
+}
+
+.reset-btn{
+    display: none;
+}
+
+.used{
+    background-color: #666;
+    color: #999;
+}

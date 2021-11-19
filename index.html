@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Letter Box</title>
+</head>
+<body>
+    <header class="header flex center">
+        <h1>Letter Box</h1>
+        <h2>The Word Guessing Game</h2>
+    </header>
+
+    <main class="game flex center">
+        <!-- <div class="word-display-box"></div> -->
+        <div class="blanks-display-box"></div>
+        <div class="player-keyboard flex"></div>
+        <button onclick="handleStart()" class="btn start-btn">go</button>
+        <button onclick="handleReset()" class="btn reset-btn">reset</button>
+        <div><span class="lives-display-box"></span> Lives Left</div>
+    </main>
+</body>
+<script src="index.js" defer></script>
+</html>
+
+
+<!-- 
+    get word from api
+    present lines/squares for each letter
+    
+    get letter from input
+    check if letter exists
+    count position of instances of the letter
+
+    replace those blocks with letters
+    tally mistakes
+
+    reset after 8 goes
+
+    stretch goals...handle multiple inputs, refactor for loop
+
+-->
