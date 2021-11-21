@@ -1,39 +1,70 @@
-Stages
+add emoji to win lose message
+animated gif demo?
 
+
+Stages
     Create the HTML
     Create the CSS
     Javascript
+
+        intro: this is a really quick intro to the code
+
+
         1. set up the keyboard
                 get char codes
                 for loop to create button elements
+                    challenge: loop to console.log numbers
+                    cha;;enge: loop to console.log letters
                 add id and eventlistener
+                    challenge: add eventlistener to each button
                 disable buttons until api call
                 append all to keyboard area
 
+
         2. start the game
                 get word from api
-                set the lives to 10
+                    challenge: delete the api call and do it again
+                    challenge: loop over word.length to get that many "-"
                 activate the letter buttons
+
+
+                probably the most complex:
+                    what is an htmlcollection? array like object!
+                    we need to convert it into an array
+                    and then do something to each element
+                optional challenge, coz hard: read hints and go for it, or wait and I will take u through it. 
+                !!!!! disable the button (we don't want it usable until we have our word)
         
         3. handle a guess
                 get the contents of the button clicked
                 make that button used/disabled
+                challenge: add classlist to button
+
                 check if target word has that letter
+                    challenge: use indexof
                     if yes, check if it has it more than once
+                    challenge: optional find ALL instances and update the userattempt array (use hint)
                         check if win
                     if no, remove a life
                         check if lose
                 update the blanks with letters
         
         4. check win
+                    challenge: write functiont hat checks win and if so, update message bottom and change word color  in green
                 message at bottom of page
                 word in green
 
         5. check lose    
+                    challenge: write functiont that checks lose and if so, update message at bottom change word color in red
+
                 message at bottom of page
                 word in red
+        
+        6 render lives left
+                challenge: render the number of lives left in emoji at the bottom of the page
 
-        6. handle reset
+        7. handle reset
+                    challenge: reset everything. inc colors, remove disabled, used Hint: look back at what we did before at line ?
                 blanks to empty
                 lives to ten
                 player guess to empty

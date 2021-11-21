@@ -5,12 +5,11 @@ const livesDisplayBox = document.getElementsByClassName('lives-display-box')[0]
 const playerKeyboard = document.getElementsByClassName('player-keyboard')[0]
 const startBtn = document.getElementsByClassName('start-btn')[0]
 const resetBtn = document.getElementsByClassName('reset-btn')[0]
-const playerGuessInput = document.getElementById('player-guess-input')
-let playerGuess = ""
+let playerAttempt = ""
 let lives = 10
 const livesEmoji = `&#127873;`
-const winMessage = `You Win! Merry Xmas!`
-const loseMessage = `Game Over. No gifts!`
+const winMessage = `You Win! &#127881;`
+const loseMessage = `Game Over. &#128534;`
 
 //set up the game
 createKeyboard()
@@ -22,20 +21,13 @@ function createKeyboard(){
     for(let i=unicodeA; i<=unicodeZ; i++){
         let character = String.fromCharCode(i);
         let letterButton =  document.createElement('button')
-        letterButton.type = 'button'
-        letterButton.innerHTML = character
+        // letterButton.type = 'button'
+        letterButton.innerText = character
         letterButton.className = 'letter-btn'
         letterButton.setAttribute('id', character)
         letterButton.disabled = true
         letterButton.addEventListener('click', handleGuess)
         playerKeyboard.appendChild(letterButton)
-    }
-}
-
-function renderLivesLeftEmojis(){
-    livesDisplayBox.innerHTML = "" // without this, what a challenge
-    for(let i=0; i<lives; i++){
-        livesDisplayBox.innerHTML += livesEmoji
     }
 }
 
@@ -46,15 +38,17 @@ function handleStart() {
             // wordToGuess = data.toString()  test mode
             // wordDisplayBox.innerText = wordToGuess
             for (let i = 0; i < wordToGuess.length; i++) {
-                playerGuess += '-'
+                playerAttempt += '-'
             }
-            blanksDisplayBox.innerText = playerGuess
+            blanksDisplayBox.innerText = playerAttempt
             startBtn.style.display = 'none'
             resetBtn.style.display = 'block'
             // livesDisplayBox.innerText = `${lives} Lives Left`
             renderLivesLeftEmojis()
             const letterButtons = document.getElementsByClassName('letter-btn')
-            Array.from(letterButtons).forEach((item)=>{
+            const newArr = Array.from(letterButtons)
+            console.log(typeof newArr, newArr)
+            newArr.forEach((item)=>{
                 item.disabled = false
             })
         })
@@ -68,9 +62,9 @@ function handleGuess(e) {
     if (wordToGuess.indexOf(stringToCheck) > -1) {
         for (let i = 0; i < wordToGuess.length; i++) {
             if (stringToCheck === wordToGuess[i]) {
-                let playerGuessArray = playerGuess.split('')
-                playerGuessArray[i] = stringToCheck
-                playerGuess = playerGuessArray.join('')
+                let playerAttemptArray = playerAttempt.split('')
+                playerAttemptArray[i] = stringToCheck
+                playerAttempt = playerAttemptArray.join('')
             }
         }
         checkWin()
@@ -81,12 +75,12 @@ function handleGuess(e) {
         renderLivesLeftEmojis()
         checkLose()
     }
-    blanksDisplayBox.innerText = playerGuess
+    blanksDisplayBox.innerText = playerAttempt
 }
 
 function checkWin() {
-    if (wordToGuess === playerGuess) {
-        livesDisplayBox.innerText = winMessage
+    if (wordToGuess === playerAttempt) {
+        livesDisplayBox.innerHTML = winMessage
         blanksDisplayBox.style.color = "limegreen"
     }
     else {
@@ -99,9 +93,16 @@ function checkLose(){
         return
     }
     else{
-        playerGuess = wordToGuess
-        livesDisplayBox.innerText = loseMessage
+        playerAttempt = wordToGuess
+        livesDisplayBox.innerHTML = loseMessage
         blanksDisplayBox.style.color = "red"
+    }
+}
+
+function renderLivesLeftEmojis(){
+    livesDisplayBox.innerHTML = "" // without this, what a challenge
+    for(let i=0; i<lives; i++){
+        livesDisplayBox.innerHTML += livesEmoji
     }
 }
 
@@ -111,7 +112,7 @@ function handleReset() {
     lives = 10
     // livesDisplayBox.innerText = `${lives} Lives Left`
     renderLivesLeftEmojis()
-    playerGuess = ''
+    playerAttempt = ''
     blanksDisplayBox.style.color = "#333"
     const usedLetters = document.getElementsByClassName('used')
     Array.from(usedLetters).forEach((item)=>{
@@ -120,3 +121,4 @@ function handleReset() {
     })
     handleStart()
 }
+

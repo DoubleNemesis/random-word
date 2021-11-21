@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #333;
-    background-image: url(xmas-fade.jpg);
-    background-size: contain;
+    background-image: url('images/xmas-fade.jpg');
+    background-size: cover;
     color: white;
     font-family: 'Poppins', sans;
     letter-spacing: .08rem;
@@ -15,7 +15,7 @@ body {
     display: flex;
 }
 
-/* fonts */
+/* text */
 h1, h2 {
     text-align: center;
 }
@@ -44,15 +44,11 @@ h2 {
     justify-content: center;
 }
 
-/* .word-display-box {
-    visibility: hidden;
-} */
-
 .blanks-display-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 280px;
     height: 3rem;
     background-color: white;
     margin: 1rem 0;
@@ -68,7 +64,7 @@ h2 {
     align-items: center;
     border-radius: 5px;
     height: 240px;
-    width: 80%;
+    width: 280px;
     flex-wrap: wrap;
     gap: .2rem;
     padding: .2rem;
@@ -92,11 +88,10 @@ button.letter-btn {
 
 button.letter-btn[disabled] {
     opacity: 0.6;
-    /* background-color: #666; */
 }
 
 button.main-btn {
-    width: 40%;
+    width: 140px;
     padding: .8rem .2rem;
     border-radius: 5px;
     border: none;
@@ -108,7 +103,7 @@ button.main-btn {
 }
 
 button.main-btn:hover, button.main-btn:active{
-    background-color:#666666;
+    background-color:#666;
     color: white;
 }
 button.reset-btn {
