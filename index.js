@@ -1,4 +1,4 @@
-let wordToGuess = 'awesome'
+let wordToGuess = ''
 const wordDisplayBox = document.getElementsByClassName('word-display-box')[0]
 const blanksDisplayBox = document.getElementsByClassName('blanks-display-box')[0]
 const livesDisplayBox = document.getElementsByClassName('lives-display-box')[0]
@@ -32,10 +32,12 @@ function createKeyboard(){
 }
 
 function handleStart() {
-    fetch('https://random-word-api.herokuapp.com/word?number=1&swear=0')
-        .then(result => result.json())
+    //HANDLE ERRORS
+        fetch('https://random-word-api.herokuapp.com/word?number=1&swear=0')
+        .then(response => response.json())
         .then(data => {
-            // wordToGuess = data.toString()  test mode
+            console.log(typeof data)      
+            wordToGuess = data.toString()  // change for testing
             // wordDisplayBox.innerText = wordToGuess
             for (let i = 0; i < wordToGuess.length; i++) {
                 playerAttempt += '-'

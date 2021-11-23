@@ -73,12 +73,14 @@ Stages
                 start function
                 
     stretch goals: 
+        handle api error -> inform user
         other displays / responsive
         light mode
         improve accessibility
         limit letter count
         make it a 2 player game
         levels?
+        onclick to addevent listener
 
 how to do slides 
 how to do courses scrimba / chapters youtube
