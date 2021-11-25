@@ -48,11 +48,17 @@ function handleStart() {
             // livesDisplayBox.innerText = `${lives} Lives Left`
             renderLivesLeftEmojis()
             const letterButtons = document.getElementsByClassName('letter-btn')
-            const newArr = Array.from(letterButtons)
-            console.log(typeof newArr, newArr)
-            newArr.forEach((item)=>{
-                item.disabled = false
-            })
+            console.log(letterButtons.length)
+            // console.log(letterButtons)
+            // const letterButtonsArr = Array.from(letterButtons)
+            // console.log(typeof letterButtonsArr, letterButtonsArr)
+            // letterButtonsArr.forEach((item)=>{
+            //     item.disabled = false
+            // })
+              for (let i=0; i<letterButtons.length; i++){
+                  letterButtons[i].disabled = false
+              }  
+
         })
 }
 
@@ -110,17 +116,19 @@ function renderLivesLeftEmojis(){
 
 function handleReset() {
     blanksDisplayBox.innerText = ''
-    // wordDisplayBox.innerText = ''
     lives = 10
-    // livesDisplayBox.innerText = `${lives} Lives Left`
     renderLivesLeftEmojis()
     playerAttempt = ''
-    blanksDisplayBox.style.color = "#333"
-    const usedLetters = document.getElementsByClassName('used')
-    Array.from(usedLetters).forEach((item)=>{
-        item.classList.remove('used')
-        item.disabled = false
-    })
+    blanksDisplayBox.style.color = '#333'
+    const usedLetters = document.querySelectorAll('.used')
+    console.log(usedLetters.length)
+    for (let i = 0; i < usedLetters.length; i++) {
+        usedLetters.classList.remove('used')
+    }
+    const letterButtons = document.getElementsByClassName('letter-btn')
+    for (let i = 0; i < letterButtons.length; i++) {
+        letterButtons[i].disabled = true
+    }
     handleStart()
 }
 

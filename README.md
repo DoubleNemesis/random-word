@@ -81,6 +81,8 @@ Stages
         make it a 2 player game
         levels?
         onclick to addevent listener
+        naming conventions,,,keyboard?
+        theming....why xmas? no need!
 
 how to do slides 
 how to do courses scrimba / chapters youtube
